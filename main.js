@@ -1,11 +1,13 @@
-// Preloader fade-out on window load
+// Preloader fade-out on window load with 2-second delay
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        preloader.classList.add('fade-out');
         setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
+            preloader.classList.add('fade-out');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 2000); // 2 second delay
     }
 });
 

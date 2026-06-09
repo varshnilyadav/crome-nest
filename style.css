@@ -243,12 +243,16 @@ header.scrolled .navbar {
 }
 
 .logo-img {
-    height: 38px;
+    height: 55px;
     width: auto;
     filter: invert(1); /* Invert black logo to white/silver */
     transition: var(--transition-smooth);
     display: inline-block;
     vertical-align: middle;
+}
+
+header.scrolled .logo-img {
+    height: 44px; /* Slightly smaller when navigation bar is scrolled */
 }
 
 .logo:hover .logo-img {
