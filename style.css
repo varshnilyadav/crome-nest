@@ -1956,3 +1956,107 @@ footer::before {
         gap: 12px;
     }
 }
+
+/* ==========================================================================
+   FLOATING ACTION BUTTONS
+   ========================================================================== */
+.floating-actions {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    z-index: 1900;
+    pointer-events: none;
+}
+
+.floating-action-btn {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: #FFF;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
+}
+
+.floating-action-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* WhatsApp Floating Button */
+.floating-whatsapp {
+    width: 50px;
+    height: 50px;
+    background-color: #25D366;
+    font-size: 24px;
+}
+
+.floating-whatsapp:hover {
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+/* Instagram Floating Button */
+.floating-instagram {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+    font-size: 24px;
+}
+
+.floating-instagram:hover {
+    box-shadow: 0 8px 30px rgba(220, 39, 67, 0.5);
+}
+
+/* Book Now Capsule Button */
+.floating-book-now {
+    height: 50px;
+    padding: 0 24px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #00C6FF 100%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px var(--accent-blue-glow);
+}
+
+.floating-book-now i {
+    font-size: 14px;
+}
+
+.floating-book-now:hover {
+    box-shadow: 0 8px 30px rgba(26, 143, 255, 0.6);
+}
+
+/* Responsive adjustment for floating buttons on mobile */
+@media (max-width: 480px) {
+    .floating-actions {
+        bottom: 20px;
+        right: 20px;
+        gap: 8px;
+    }
+    
+    .floating-action-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+    
+    .floating-book-now {
+        height: 44px;
+        padding: 0 16px;
+    }
+    
+    .floating-book-now span {
+        display: none; /* Hide text on very small devices, keep only icon to save space */
+    }
+}
