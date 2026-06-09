@@ -1,6 +1,6 @@
 // Preloader fade-out on window load with 2-second delay
 window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
+    const preloader = document.getElementById('Crome-nest-preloader') || document.getElementById('preloader');
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add('fade-out');
