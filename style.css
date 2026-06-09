@@ -948,91 +948,140 @@ header.scrolled .logo-img {
 }
 
 /* --- TESTIMONIALS SECTION --- */
-.testimonials {
+.testimonials-section {
+    position: relative;
+    padding: 100px 0;
     background-color: var(--bg-secondary);
+    overflow: hidden;
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(ellipse, rgba(26, 143, 255, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.testimonials-track-wrapper {
+    overflow: hidden;
+    margin: 0 -24px;
+    padding: 0 24px;
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 24px;
+    animation: scrollTestimonials 35s linear infinite;
+    width: max-content;
+}
+
+.testimonials-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollTestimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .testimonial-card {
+    flex-shrink: 0;
+    width: 380px;
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.02);
     border-radius: var(--border-radius-md);
-    padding: 40px 30px;
+    padding: 28px;
     transition: var(--transition-smooth);
-    position: relative;
+    cursor: default;
 }
 
 .testimonial-card:hover {
-    border-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(26, 143, 255, 0.25);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-blue-glow);
+    transform: translateY(-4px);
 }
 
-.testimonial-stars {
-    color: #FFD700;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.testimonial-text {
-    color: var(--text-secondary);
-    font-size: 14px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    font-style: italic;
-    position: relative;
-}
-
-.testimonial-text::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    left: -10px;
-    font-size: 60px;
-    font-family: serif;
-    color: rgba(255, 255, 255, 0.05);
-}
-
-.testimonial-author {
+.testimonial-header {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
-.author-avatar {
-    width: 50px;
-    height: 50px;
+.reviewer-avatar {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--chrome-silver) 0%, var(--chrome-dark) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
+    font-size: 12px;
     color: var(--text-primary);
-    font-weight: 700;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.author-info h4 {
+.reviewer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.reviewer-name {
     font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-size: 11px;
     color: var(--text-primary);
-    margin-bottom: 2px;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.author-info span {
+.reviewer-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     font-size: 11px;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+.reviewer-time svg {
+    color: var(--text-secondary);
+}
+
+.google-badge {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover .google-badge {
+    opacity: 1;
+}
+
+.testimonial-stars {
+    font-size: 14px;
+    color: #FFD700;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+
+.testimonial-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-style: italic;
 }
 
 /* --- BOOKING & CONTACT --- */
