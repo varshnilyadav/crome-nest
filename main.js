@@ -1,3 +1,14 @@
+// Preloader fade-out on window load
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
@@ -36,11 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       2. SCROLL SPY (ACTIVE NAV LINKS)
+       2. SCROLL SPY (ACTIVE NAV LINKS - Home Page Only)
        ========================================================================== */
     const sections = document.querySelectorAll('section[id]');
+    const isHomePage = document.querySelector('.hero') !== null;
     
     function scrollSpy() {
+        if (!isHomePage) return;
+        
         const scrollPosition = window.scrollY + 120; // offset for header height
 
         sections.forEach(section => {
@@ -51,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
+                    const href = link.getAttribute('href');
+                    if (href === `#${sectionId}` || href === `index.html#${sectionId}`) {
                         link.classList.add('active');
                     }
                 });
@@ -59,8 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    window.addEventListener('scroll', scrollSpy);
-    scrollSpy(); // Initial call
+    if (isHomePage) {
+        window.addEventListener('scroll', scrollSpy);
+        scrollSpy(); // Initial call
+    }
 
 
     /* ==========================================================================
@@ -203,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       6. RESERVATION FORM VALIDATION & SUCCESS TOAST
+       6. RESERVATION FORM VALIDATION & SUCCESS TOAST WITH WHATSAPP REDIRECT
        ========================================================================== */
     const bookingForm = document.getElementById('booking-form');
     const toast = document.getElementById('toast-notification');
@@ -250,6 +267,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Build WhatsApp Redirect URL
+            const whatsappNumber = "919876543210";
+            const serviceLabel = service.options[service.selectedIndex].text;
+            const text = `Hi Crome Nest, I'd like to book a detailing session.%0A%0A*Details:*%0A- *Name:* ${encodeURIComponent(name.value)}%0A- *Phone:* ${encodeURIComponent(phone.value)}%0A- *Car:* ${encodeURIComponent(car.value)}%0A- *Service:* ${encodeURIComponent(serviceLabel)}%0A- *Preferred Date:* ${encodeURIComponent(date.value)}`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
+
             // Mock success action
             const submitBtn = document.getElementById('form-submit-btn');
             submitBtn.textContent = 'Scheduling...';
@@ -258,6 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 // Show Success Toast
                 toast.classList.add('show');
+                
+                // Redirect to WhatsApp in a new tab
+                window.open(whatsappUrl, '_blank');
                 
                 // Reset form fields
                 bookingForm.reset();

@@ -17,24 +17,32 @@
 </head>
 <body>
 
+    <!-- --- PRELOADER --- -->
+    <div id="preloader" role="status" aria-label="Loading Crome Nest Detailing">
+        <div class="preloader-content">
+            <img src="assets/logo.png" alt="Crome Nest Logo" class="preloader-logo">
+            <div class="preloader-spinner"></div>
+        </div>
+    </div>
+
     <!-- --- STICKY HEADER / NAVBAR --- -->
     <header id="header">
         <div class="container">
             <nav class="navbar" role="navigation" aria-label="Main Navigation">
-                <a href="#home" class="logo chrome-shimmer" id="logo-link">
-                    <i class="fa-solid fa-gem"></i> CROME NEST
+                <a href="index.html" class="logo" id="logo-link">
+                    <img src="assets/logo.png" alt="Crome Nest Premium Detailing Logo" class="logo-img">
                 </a>
                 
                 <ul class="nav-links" id="nav-menu">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#transformations">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#transformations">Transformations</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 
                 <div class="nav-cta">
-                    <a href="#contact" class="btn btn-primary" id="header-cta-btn">Book Now</a>
+                    <a href="index.html#contact" class="btn btn-primary" id="header-cta-btn">Book Now</a>
                 </div>
                 
                 <button class="menu-btn" id="mobile-menu-btn" aria-label="Toggle Mobile Menu" aria-expanded="false">
@@ -160,19 +168,20 @@
             <div class="services-grid">
                 <!-- Exterior Detailing -->
                 <article class="service-card animate-element">
-                    <div class="service-card-bg" style="background-image: url('assets/why_us.png');"></div>
+                    <div class="service-card-bg" style="background-image: url('assets/exterior_detail.png');"></div>
                     <div class="service-icon"><i class="fa-solid fa-car-side"></i></div>
                     <h3 class="service-title">Exterior Detailing</h3>
                     <p class="service-desc">Multi-stage paint correction, compounding, and refinement to safely eliminate swirl marks, spiderweb scratches, and restore a flawless mirror glaze.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services.html#exterior-detailing" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
 
                 <!-- Interior Deep Cleaning -->
                 <article class="service-card animate-element delay-1">
+                    <div class="service-card-bg" style="background-image: url('assets/interior_detail.png');"></div>
                     <div class="service-icon"><i class="fa-solid fa-soap"></i></div>
                     <h3 class="service-title">Interior Deep Cleaning</h3>
                     <p class="service-desc">Complete vacuuming, steam sanitization, leather rejuvenation, and meticulous detailing of vents, dashboard, console, and upholstery.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services.html#interior-cleaning" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
 
                 <!-- Ceramic Coating -->
@@ -181,7 +190,7 @@
                     <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3 class="service-title">Ceramic Coating</h3>
                     <p class="service-desc">Premium nano-ceramic shields offering hyper-hydrophobic water beading, chemical resistance, UV protection, and a permanent glass gloss finish.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services.html#ceramic-coating" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
 
                 <!-- Paint Protection Film -->
@@ -190,23 +199,25 @@
                     <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
                     <h3 class="service-title">Paint Protection Film</h3>
                     <p class="service-desc">Self-healing, high-gloss polyurethane TPU shields protecting your car against stone chips, highway debris, key marks, and paint damage.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services.html#ppf-protection" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
 
                 <!-- Chrome / Rim Polishing -->
                 <article class="service-card animate-element delay-1">
+                    <div class="service-card-bg" style="background-image: url('assets/chrome_polishing.png');"></div>
                     <div class="service-icon"><i class="fa-solid fa-circle-dot"></i></div>
                     <h3 class="service-title">Chrome & Rim Polishing</h3>
                     <p class="service-desc">Intense restoration of chrome, exhaust tips, and alloy wheels to eliminate brake dust, oxidation, and restore deep metallic brilliance.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services.html#chrome-restoration" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
 
                 <!-- Full Car Spa Package -->
                 <article class="service-card animate-element delay-2">
+                    <div class="service-card-bg" style="background-image: url('assets/car_spa.png');"></div>
                     <div class="service-icon"><i class="fa-solid fa-sparkles"></i></div>
                     <h3 class="service-title">Full Car Spa Package</h3>
                     <p class="service-desc">The ultimate rejuvenation sequence including ph-neutral snow wash, iron decontaminator, clay bar, wax application, and glass polishing.</p>
-                    <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services.html#car-spa-package" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
             </div>
         </div>
@@ -464,8 +475,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about animate-element">
-                    <a href="#home" class="logo chrome-shimmer">
-                        <i class="fa-solid fa-gem"></i> CROME NEST
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo.png" alt="Crome Nest Logo" class="logo-img">
                     </a>
                     <p class="tagline">Detail That Defines You. Hyderabad's premier custom paint correction and coating studio.</p>
                 </div>
@@ -473,11 +484,11 @@
                 <div class="footer-links animate-element delay-1">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#about">About Studio</a></li>
-                        <li><a href="#transformations">Before & After</a></li>
-                        <li><a href="#contact">Book Session</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#transformations">Before & After</a></li>
+                        <li><a href="index.html#contact">Book Session</a></li>
                     </ul>
                 </div>
                 
