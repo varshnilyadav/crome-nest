@@ -765,8 +765,8 @@ header.scrolled .logo-img {
     transition: var(--transition-smooth);
     background-image: url('assets/why_us.png');
     background-size: cover;
-    background-position: center;
-    aspect-ratio: 4/3;
+    background-position: center top;
+    aspect-ratio: 1/1;
     width: 100%;
 }
 
