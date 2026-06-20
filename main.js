@@ -318,4 +318,95 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    /* ==========================================================================
+       7. FAQ ACCORDION TOGGLE
+       ========================================================================== */
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const answer = btn.nextElementSibling;
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+            // Close all other FAQs
+            faqQuestions.forEach(otherBtn => {
+                if (otherBtn !== btn) {
+                    otherBtn.setAttribute('aria-expanded', 'false');
+                    otherBtn.nextElementSibling.style.maxHeight = null;
+                }
+            });
+
+            // Toggle active state
+            btn.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.style.maxHeight = null;
+            }
+        });
+    });
+
+    /* ==========================================================================
+       8. TRANSFORMATIONS GALLERY CAROUSEL
+       ========================================================================== */
+    const gallerySlides = document.querySelectorAll('.gallery-slide');
+    const galleryDots = document.querySelectorAll('.gallery-dot');
+    const prevBtn = document.getElementById('gallery-prev');
+    const nextBtn = document.getElementById('gallery-next');
+    let currentSlide = 0;
+
+    if (gallerySlides.length > 0) {
+        function showSlide(index) {
+            // Keep index within bounds
+            if (index < 0) {
+                index = gallerySlides.length - 1;
+            } else if (index >= gallerySlides.length) {
+                index = 0;
+            }
+
+            currentSlide = index;
+
+            // Update slide active state
+            gallerySlides.forEach((slide, idx) => {
+                if (idx === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update dots
+            galleryDots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Event listeners for prev/next buttons
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+        }
+
+        // Event listeners for dots
+        galleryDots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                showSlide(idx);
+            });
+        });
+
+        // Initialize first slide
+        showSlide(0);
+    }
 });
