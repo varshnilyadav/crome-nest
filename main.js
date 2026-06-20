@@ -1,57 +1,5 @@
-// ===================== DEVELOPMENT LOCK =====================
-(function() {
-    // Check if already authenticated in this session
-    if (sessionStorage.getItem('dev_auth') === 'true') return;
+// Crome Nest Main JavaScript
 
-    // Immediately hide the body to prevent content from flashing/showing
-    document.documentElement.style.display = 'none';
-
-    window.addEventListener('DOMContentLoaded', () => {
-        // Hide body completely
-        document.body.style.display = 'none';
-        document.documentElement.style.display = 'block';
-
-        // Create lock overlay
-        const lockOverlay = document.createElement('div');
-        lockOverlay.id = 'dev-lock-screen';
-        lockOverlay.innerHTML = `
-            <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:#0a0a0a; z-index:9999999; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-family:'Inter', sans-serif;">
-                <img src="assets/logo.png" alt="Crome Nest Logo" style="width:150px; margin-bottom:20px;">
-                <h2 style="margin-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size: 18px; color:#c0c0c0;">Site Under Development</h2>
-                <p style="margin-bottom:25px; color:#888; font-size: 14px;">Please enter credentials to access the preview.</p>
-                
-                <input type="text" id="dev-id" placeholder="User ID" style="margin-bottom:12px; padding:12px 15px; width:280px; background:#111; border:1px solid #333; color:white; border-radius:6px; outline:none;">
-                <input type="password" id="dev-pass" placeholder="Password" style="margin-bottom:20px; padding:12px 15px; width:280px; background:#111; border:1px solid #333; color:white; border-radius:6px; outline:none;">
-                
-                <button id="dev-login-btn" style="padding:12px 20px; width:280px; background:linear-gradient(135deg, #333, #111); border:1px solid #444; color:white; cursor:pointer; font-weight:600; letter-spacing:1px; border-radius:6px; transition:0.3s;">UNLOCK SITE</button>
-                <p id="dev-error-msg" style="color:#ff4c4c; margin-top:15px; font-size:13px; display:none;">Invalid ID or Password</p>
-            </div>
-        `;
-        document.documentElement.appendChild(lockOverlay);
-
-        // Login Logic
-        const loginBtn = document.getElementById('dev-login-btn');
-        loginBtn.addEventListener('click', () => {
-            const id = document.getElementById('dev-id').value;
-            const pass = document.getElementById('dev-pass').value;
-            
-            // Set your desired ID and Password here:
-            if (id === 'admin' && pass === 'crome2026') {
-                sessionStorage.setItem('dev_auth', 'true');
-                lockOverlay.remove();
-                document.body.style.display = ''; // Restore body
-            } else {
-                document.getElementById('dev-error-msg').style.display = 'block';
-            }
-        });
-
-        // Allow pressing 'Enter' to submit
-        document.getElementById('dev-pass').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') loginBtn.click();
-        });
-    });
-})();
-// ==========================================================
 
 // Preloader fade-out on window load with 2-second delay
 window.addEventListener('load', () => {
